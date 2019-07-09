@@ -9,9 +9,6 @@
         [JsonProperty("allowExternalMembers")]
         public bool? AllowExternalMembers { get; set; }
 
-        [JsonProperty("allowGoogleCommunication")]
-        public bool? AllowGoogleCommunication { get; set; }
-
         [JsonProperty("allowWebPosting")]
         public bool? AllowWebPosting { get; set; }
 
@@ -47,14 +44,8 @@
         [JsonProperty("kind"), JsonConverter(typeof(JsonNullStringConverter))]
         public string Kind { get; set; }
 
-        [JsonProperty("maxMessageBytes")]
-        public int? MaxMessageBytes { get; set; }
-
         [JsonProperty("membersCanPostAsTheGroup")]
         public bool? MembersCanPostAsTheGroup { get; set; }
-
-        [JsonProperty("messageDisplayFont"), JsonConverter(typeof(JsonNullStringConverter))]
-        public string MessageDisplayFont { get; set; }
 
         [JsonProperty("messageModerationLevel"), JsonConverter(typeof(JsonNullStringConverter))]
         public string MessageModerationLevel { get; set; }
@@ -118,10 +109,6 @@
                         this.AllowExternalMembers = info.GetString(entry.Name).ToNullableBool();
                         break;
 
-                    case "allowGoogleCommunication":
-                        this.AllowGoogleCommunication = info.GetString(entry.Name).ToNullableBool();
-                        break;
-
                     case "allowWebPosting":
                         this.AllowWebPosting = info.GetString(entry.Name).ToNullableBool();
                         break;
@@ -176,10 +163,6 @@
 
                     case "kind":
                         this.Kind = info.GetString(entry.Name);
-                        break;
-
-                    case "messageDisplayFont":
-                        this.MessageDisplayFont = info.GetString(entry.Name);
                         break;
 
                     case "messageModerationLevel":
@@ -246,10 +229,6 @@
                         this.IsArchived = info.GetString(entry.Name).ToNullableBool();
                         break;
 
-                    case "maxMessageBytes":
-                        this.MaxMessageBytes = info.GetInt32(entry.Name);
-                        break;
-
                     case "membersCanPostAsTheGroup":
                         this.MembersCanPostAsTheGroup = info.GetString(entry.Name).ToNullableBool();
                         break;
@@ -274,11 +253,6 @@
             if (this.AllowExternalMembers != null)
             {
                 info.AddValue("allowExternalMembers", this.AllowExternalMembers.Value.ToLowerString());
-            }
-
-            if (this.AllowGoogleCommunication != null)
-            {
-                info.AddValue("allowGoogleCommunication", this.AllowGoogleCommunication.Value.ToLowerString());
             }
 
             if (this.AllowWebPosting != null)
@@ -360,16 +334,6 @@
             if (this.Description != null)
             {
                 info.AddValue("description", this.Description);
-            }
-
-            if (this.MaxMessageBytes != null)
-            {
-                info.AddValue("maxMessageBytes", this.MaxMessageBytes.Value);
-            }
-
-            if (this.MessageDisplayFont != null)
-            {
-                info.AddValue("messageDisplayFont", this.MessageDisplayFont);
             }
 
             if (this.MessageModerationLevel != null)
